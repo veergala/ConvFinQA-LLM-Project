@@ -1,26 +1,11 @@
 import json
 
 from dotenv import load_dotenv
-
-# from pandasai import Agent as pandasagent
-from pydantic import BaseModel
 from pydantic_ai import Agent, RunContext
 
+from models import ConvFinQAEntry, FinancialResponse
+
 load_dotenv()
-
-
-class ConvFinQAEntry(BaseModel):
-    pre_text: list
-    post_text: list
-    table: list
-
-
-class FinancialResponse(BaseModel):
-    """Structured response for financial questions"""
-
-    answer: str
-    calculation_explanation: str
-    data_points_used: list[str]
 
 
 agent = Agent(
@@ -82,17 +67,6 @@ async def extract_table_data(ctx: RunContext[ConvFinQAEntry]) -> str:
     return table_data
 
 
-@agent.tool
-async def extract_pre_text_data(ctx: RunContext[ConvFinQAEntry]) -> str:
-    return
-
-
-@agent.tool_plain
-async def add(a: int, b: int) -> str:
-    """Add two numbers"""
-    return str(a + b)
-
-
 @agent.tool_plain
 async def calculate_percentage_change(initial: int, end: int) -> str:
     """Calculate the percentage change between two numbers labelled initial and end."""
@@ -130,10 +104,6 @@ def run_qa(row):
     Handles both single QA format (data[row]["qa"]) and
     multiple QA format (data[row]["qa_0"], data[row]["qa_1"], etc).
     """
-    # Load JSON data
-    with open("train.json", "r") as f:
-        data = json.load(f)
-
     # Create example data object
     example_data = ConvFinQAEntry(
         pre_text=data[row]["pre_text"],
@@ -178,9 +148,17 @@ def run_qa(row):
         except (ValueError, AttributeError):
             # Non-numeric answers
             print("Note: Non-numeric answer comparison")
-
-    return
+    return qa_data["answer"]
 
 
 if __name__ == "__main__":
-    run_qa(5)
+    # Load JSON data
+    with open("train.json", "r") as f:
+        data = json.load(f)
+
+    data_size = 0
+    error = 0
+
+    for i in range(len(data)):
+        data_size += 1
+        run_qa(i)
