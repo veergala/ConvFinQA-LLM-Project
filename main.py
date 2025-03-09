@@ -30,6 +30,7 @@ def run_qa(row):
         ]
 
     # Process each QA pair
+    errors = []
     for qa_key, qa_data in qa_pairs:
         print(f"\n{'=' * 50}")
         print(f"Processing {qa_key}:")
@@ -49,12 +50,14 @@ def run_qa(row):
         try:
             actual = float(result.data.answer.rstrip("%"))
             expected = float(qa_data["answer"].rstrip("%"))
-            error = abs(actual - expected)
-            print(f"Absolute Error: {error:.1f}%")
+            error = abs((actual - expected) / expected) * 100
+            print(actual, expected, error)
+            print(f"Error: {error}")
+            errors.append(error)
         except (ValueError, AttributeError):
             # Non-numeric answers
             print("Note: Non-numeric answer comparison")
-    return qa_data["answer"]
+    return qa_data["answer"], errors
 
 
 if __name__ == "__main__":
@@ -62,9 +65,8 @@ if __name__ == "__main__":
     with open("train.json", "r") as f:
         data = json.load(f)
 
-    data_size = 0
-    error = 0
+    errors = []
 
-    for i in range(len(data)):
-        data_size += 1
-        run_qa(i)
+    for i in range(5):
+        errors += run_qa(i)[1]
+    print(errors)

@@ -1,13 +1,12 @@
 from dotenv import load_dotenv
-from pydantic_ai import Agent, RunContext
-
 from models import ConvFinQAEntry, FinancialResponse
+from pydantic_ai import Agent, RunContext
 
 load_dotenv()
 
 
 agent = Agent(
-    model="gemini-1.5-flash",
+    model="gemini-2.0-flash",
     deps_type=ConvFinQAEntry,
     result_type=FinancialResponse,
     system_prompt=(
@@ -19,8 +18,11 @@ agent = Agent(
         "   - Post-text contains additional context\n"
         "2. Identify relevant data points from ALL sources\n"
         "3. Show your calculation process clearly\n"
-        "4. Format numbers with appropriate precision\n"
-        "5. Return structured responses with:\n"
+        "4. Do NOT round during intermediate calculations\n"
+        "5. The answer MAY be negative\n"
+        "6. Give the exact number - do not round\n"
+        "7. Where two dates are given and the question asks you to calculate change, assume the change is between the earlier and later year\n"
+        "7. Return structured responses with:\n"
         "   - Direct answer to the question\n"
         "   - Explanation of calculations\n"
         "   - List of data points used\n"
@@ -58,7 +60,7 @@ async def extract_table_data(ctx: RunContext[ConvFinQAEntry]) -> str:
                 + str(row[0])
                 + " was "
                 + str(row[i])
-                + ". /n"
+                + ". \n"
             )
             table_data += datapoint_string
     print(table_data)
@@ -67,8 +69,8 @@ async def extract_table_data(ctx: RunContext[ConvFinQAEntry]) -> str:
 
 @agent.tool_plain
 async def calculate_percentage_change(initial: int, end: int) -> str:
-    """Calculate the percentage change between two numbers labelled initial and end."""
-    fraction = (initial - end) / initial
+    """Calculate the percentage change between two numbers, where initial is chronologically before end."""
+    fraction = (end - initial) / initial
     return str((fraction * 100)) + "%"
 
 
