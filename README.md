@@ -25,8 +25,7 @@ There are a small number of questions where the expected answers are non-numeric
 
 ## Accuracy Metrics
 
-The answers in the dataset are all numeric. I initially chose to use the absolute percentage error as my accuracy metric, calculated as:
-$  APE = \left|\frac{\text{actual} - \text{expected}}{\text{expected}}\right| \times 100\% $
+The answers in the dataset are all numeric. I initially chose to use the absolute percentage error as my accuracy metric.
 
 I chose this for a few reasons. Firstly, the dataset's "answer" values represent financial metrics like revenue, profit margins, and growth rates. Financial data can vary greatly in magnitude (from small percentages to billions in revenue). Percentage error normalizes these differences, making errors comparable across different scales.
 
