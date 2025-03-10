@@ -19,3 +19,7 @@ I chose this for a few reasons. Firstly, the dataset's "answer" values represent
 Secondly, I thought it important to consider the use-case of such a model. The nature of the dataset means this model will most likely be used in business cases, where I believe the absolute percentage error's interpretability would be better than other metrics for numerical errors (RMSE etc.). We can easily make a statement like "the prediction was off by X%" and can reasonably assume this would be understood by non-technical stakeholders.
 
 Finally, in financial calculations we can assume that both over and under-predictions are equally as problematic for model performance, so we need some form of symmetry. The absolute value ensures this is the case.
+
+## Further Development Options
+
+In my output I highlight the datapoints used. Given more time, I would try to do some validation of these against the question, and potentially also against the table to make sure they are being extracted properly.

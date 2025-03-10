@@ -49,8 +49,8 @@ def run_qa(row):
 
         # Calculate accuracy (if answers are numeric)
         try:
-            actual = float(result.data.answer.rstrip("%"))
-            expected = float(qa_data["answer"].rstrip("%"))
+            actual = float(result.data.answer.strip(" %#$"))
+            expected = float(qa_data["answer"].strip(" %#$"))
             error = abs((actual - expected) / expected) * 100
             print(actual, expected, error)
             print(f"Error: {error}")
@@ -68,7 +68,7 @@ def run_qa(row):
                 expected_answer=qa_data["answer"],
                 percentage_error=error,
                 question=qa_data["question"],
-                model_choice = model_choice
+                model_choice=model_choice,
             )
             response_metadata_list.append(response_metadata)
 
@@ -87,7 +87,7 @@ if __name__ == "__main__":
         all_results = []
 
     # Process the data and collect results
-    for i in range(5):
+    for i in range(3):
         results = run_qa(i)
         for result in results:
             all_results.append(result.dict())
