@@ -9,7 +9,6 @@ class ConvFinQAEntry(BaseModel):
 
 class FinancialResponse(BaseModel):
     """Structured response for financial questions"""
-
     answer: str
     calculation_explanation: str
     data_points_used: list[str]

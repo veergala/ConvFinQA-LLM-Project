@@ -25,7 +25,7 @@ def run_qa(row):
         # Multiple QA format - gather all qa_N keys
         qa_pairs = [
             (f"qa_{i}", data[row][f"qa_{i}"])
-            for i in range(10)  # Check up to qa_9
+            for i in range(2)
             if f"qa_{i}" in data[row]
         ]
 
