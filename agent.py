@@ -81,9 +81,3 @@ async def calculate_growth_rate(initial: float, final: float, periods: int = 1) 
         return "Cannot calculate growth rate with zero or negative values"
     cagr = ((final / initial) ** (1 / periods) - 1) * 100
     return f"{cagr:.2f}%"
-
-
-@agent.tool_plain
-async def format_currency(amount: float, decimals: int = 2) -> str:
-    """Format numbers as currency with proper comma separation."""
-    return f"${amount:,.{decimals}f}"
