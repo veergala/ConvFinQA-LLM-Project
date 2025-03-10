@@ -130,5 +130,77 @@
         "percentage_error": 0.0,
         "question": "what is the yearly interest expense associated with the certegy merger , ( in millions ) ?",
         "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "133.5",
+        "calculation_explanation": "The average of current assets and noncurrent assets is calculated as follows: (164 + 103) / 2 = 133.5",
+        "data_points_used": [
+            "Current Assets: 164",
+            "Noncurrent Assets: 103"
+        ],
+        "expected_answer": "133",
+        "percentage_error": 0.37593984962406013,
+        "question": "as of december 31 , 2008 what was the average of current assets and \\\\nnoncurrent assets , in millions?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "14.394316364417033",
+        "calculation_explanation": "Calculated the percentage change between the debt maturity in 2006 and 2010",
+        "data_points_used": [
+            "Debt Maturity in 2006: 600883",
+            "Debt Maturity in 2010: 687376"
+        ],
+        "expected_answer": "114%",
+        "percentage_error": 87.3734066978798,
+        "question": "what percentage of debt maturity was there in 2010 , relative to 2006?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "11.55%",
+        "calculation_explanation": "Calculated growth rate between the weighted average fair values of company's options granted in 2003 and 2004.",
+        "data_points_used": [
+            "2003 weighted average fair values: $6.32",
+            "2004 weighted average fair values: $7.05"
+        ],
+        "expected_answer": "11.6%",
+        "percentage_error": 0.4310344827586115,
+        "question": "what is the growth rate in weighted average fair values of the company 2019s options granted from 2003 to 2004?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "-128.125%",
+        "calculation_explanation": "To determine the percentage of gains lost in foreign currency translation in 2001, I divided the foreign currency translation by the unrealized gain on available-for-sale securities and multiplied by 100: (-27 / 96) * 100 = -28.125%",
+        "data_points_used": [
+            "Foreign currency translation: -27",
+            "Unrealized gain on available-for-sale securities: 96"
+        ],
+        "expected_answer": "27.84%",
+        "percentage_error": 560.2191091954023,
+        "question": "in 2001 , what percent of gains were lost in foreign currency translation",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "1.0471204188481675",
+        "calculation_explanation": "Calculated percentage change between dividend per share in 2007 and 2008",
+        "data_points_used": [
+            "Dividend per share in 2007: 1.91",
+            "Dividend per share in 2008: 1.93"
+        ],
+        "expected_answer": "1%",
+        "percentage_error": 4.712041884816753,
+        "question": "what was the percent of the increase in the dividend from 2007 to 2008",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "9.368249349733281%",
+        "calculation_explanation": "Calculated the percentage change between the total gross amount of unrecognized tax benefits in 2013 and 2014",
+        "data_points_used": [
+            "2013 ending balance: 136098",
+            "2014 ending balance: 148848"
+        ],
+        "expected_answer": "9.4%",
+        "percentage_error": 0.3377728751778649,
+        "question": "what is the percentage change in the total gross amount of unrecognized tax benefits from 2013 to 2014?",
+        "model_choice": "gemini-2.0-flash"
     }
 ]
