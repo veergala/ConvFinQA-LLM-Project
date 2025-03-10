@@ -1,1 +1,134 @@
-[]
+[
+    {
+        "answer": "-3.731471096844769",
+        "calculation_explanation": "(174247-181001)/181001",
+        "data_points_used": [
+            "2008 net cash from operating activities: 181001",
+            "2009 net cash from operating activities: 174247"
+        ],
+        "expected_answer": "14.1%",
+        "percentage_error": 126.46433402017567,
+        "question": "what was the percentage change in the net cash from operating activities from 2008 to 2009",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "1.2765036780614452",
+        "calculation_explanation": "Calculated the percentage change between the revenue in 2007 and 2008",
+        "data_points_used": [
+            "2007 revenue: 9244",
+            "2008 revenue: 9362"
+        ],
+        "expected_answer": "1.3%",
+        "percentage_error": 1.8074093798888375,
+        "question": "what was the percent of the growth in the revenues from 2007 to 2008",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "-32.81974195164725%",
+        "calculation_explanation": "(Net sales in 2001 - Net sales in 2000) / Net sales in 2000 = (5363 - 7983) / 7983 = -32.81974195164725%",
+        "data_points_used": [
+            "Net sales in 2000: 7983",
+            "Net sales in 2001: 5363"
+        ],
+        "expected_answer": "-32%",
+        "percentage_error": 2.561693598897663,
+        "question": "what was the percentage change in net sales from 2000 to 2001?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "-3.731471096844769",
+        "calculation_explanation": "(174247-181001)/181001",
+        "data_points_used": [
+            "Net cash from operating activities in 2008: 181001",
+            "Net cash from operating activities in 2009: 174247"
+        ],
+        "expected_answer": "14.1%",
+        "percentage_error": 126.46433402017567,
+        "question": "what was the percentage change in the net cash from operating activities from 2008 to 2009",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "1.2765036780614452",
+        "calculation_explanation": "Calculated the percentage change between the revenue in 2007 and 2008",
+        "data_points_used": [
+            "2007 revenue: 9244",
+            "2008 revenue: 9362"
+        ],
+        "expected_answer": "1.3%",
+        "percentage_error": 1.8074093798888375,
+        "question": "what was the percent of the growth in the revenues from 2007 to 2008",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "-32.81974195164725%",
+        "calculation_explanation": "(5363-7983)/7983",
+        "data_points_used": [
+            "Net sales in 2000: 7983",
+            "Net sales in 2001: 5363"
+        ],
+        "expected_answer": "-32%",
+        "percentage_error": 2.561693598897663,
+        "question": "what was the percentage change in net sales from 2000 to 2001?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "17.63975155279503",
+        "calculation_explanation": "Calculated the percentage change between the net cash provided by operating activities in 2017 and 2018",
+        "data_points_used": [
+            "Net cash provided by operating activities in 2017: 2415.2",
+            "Net cash provided by operating activities in 2018: 2841.0"
+        ],
+        "expected_answer": "16.7%",
+        "percentage_error": 5.627254807155871,
+        "question": "what was the percent of the change in the cash provided by operations from 2017 to 2018\\\\n",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "66.1%",
+        "calculation_explanation": "145900 / 220600 * 100",
+        "data_points_used": [
+            "Goodwill: 145900",
+            "Estimated Purchase Price: 220600"
+        ],
+        "expected_answer": "66%",
+        "percentage_error": 0.15151515151514292,
+        "question": "what percentage of the estimated purchase price is goodwill?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "17.90571169537625",
+        "calculation_explanation": "39500 / 220600 * 100",
+        "data_points_used": [
+            "Developed technology and know how: 39500",
+            "Estimated purchase price: 220600"
+        ],
+        "expected_answer": "18%",
+        "percentage_error": 0.5238239145763836,
+        "question": "what percentage of the estimated purchase price is developed technology and know how?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "34500",
+        "calculation_explanation": "96161-61661 = 34500",
+        "data_points_used": [
+            "2007 principal maturities before refinancing: 61661",
+            "2007 principal maturities after refinancing: 96161"
+        ],
+        "expected_answer": "-34500",
+        "percentage_error": 200.0,
+        "question": "what was the change , in thousands , of principal maturities due in 2007 after the the debt refinancing completed on january 18 , 2007?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "9.5",
+        "calculation_explanation": "The yearly interest expense associated with the Certegy merger is 4.75% of $200 million. 0.0475 * 200 = 9.5",
+        "data_points_used": [
+            "Interest rate: 4.75%",
+            "Principal amount: $200 million"
+        ],
+        "expected_answer": "9.5",
+        "percentage_error": 0.0,
+        "question": "what is the yearly interest expense associated with the certegy merger , ( in millions ) ?",
+        "model_choice": "gemini-2.0-flash"
+    }
+]

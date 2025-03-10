@@ -1,33 +1,34 @@
 import json
 import os
+import random
 
 from agent import agent, model_choice
 from models import ConvFinQAEntry, ResponseMetadata
 
 
-def run_qa(row):
+def run_qa(dataset, row_num):
     """Run QA evaluation for a given row in the training data.
 
     Handles both single QA format (data[row]["qa"]) and
     multiple QA format (data[row]["qa_0"], data[row]["qa_1"], etc).
     """
-    # Create example data object
-    example_data = ConvFinQAEntry(
-        pre_text=data[row]["pre_text"],
-        post_text=data[row]["post_text"],
-        table=data[row]["table"],
+
+    processed_data = ConvFinQAEntry(
+        pre_text=dataset[row_num]["pre_text"],
+        post_text=dataset[row_num]["post_text"],
+        table=dataset[row_num]["table"],
     )
 
     # Check for QA format
-    if "qa" in data[row]:
+    if "qa" in dataset[row_num]:
         # Single QA format
-        qa_pairs = [("qa", data[row]["qa"])]
+        qa_pairs = [("qa", dataset[row_num]["qa"])]
     else:
         # Double QA format - gather qa_0 and qa_1
         qa_pairs = [
-            (f"qa_{i}", data[row][f"qa_{i}"])
+            (f"qa_{i}", dataset[row_num][f"qa_{i}"])
             for i in range(2)
-            if f"qa_{i}" in data[row]
+            if f"qa_{i}" in dataset[row_num]
         ]
 
     # Process each QA pair
@@ -38,7 +39,7 @@ def run_qa(row):
         print(f"Question: {qa_data['question']}")
 
         # Run the agent
-        result = agent.run_sync(qa_data["question"], deps=example_data)
+        result = agent.run_sync(qa_data["question"], deps=processed_data)
 
         # Print results
         print("\nAgent Response:")
@@ -88,7 +89,8 @@ if __name__ == "__main__":
 
     # Process the data and collect results
     for i in range(3):
-        results = run_qa(i)
+        k = random.randint(0, len(data))
+        results = run_qa(data, k)
         for result in results:
             all_results.append(result.dict())
 

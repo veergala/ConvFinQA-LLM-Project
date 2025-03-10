@@ -20,6 +20,12 @@ Secondly, I thought it important to consider the use-case of such a model. The n
 
 Finally, in financial calculations we can assume that both over and under-predictions are equally as problematic for model performance, so we need some form of symmetry. The absolute value ensures this is the case.
 
+Another possible option would have been to do an exact match on the numbers. Since we are dealing with financial data, it is important that the model gets the answer exactly correct. However, the dataset answers are not well formatted. They have inconsistencies in the number of decimal places/significant figures that they display. Again with more time it might have been possible to pre-process the dataset further, however some of the precision of the answers would have been compromised to account for rounding. As such, the percentage error metric seemed optimal.
+
+## Evaluation
+
+Due to constraints with free tier API keys, I set up a way to work with API rate limits whilst also having an expansive set of LLM outputs and associated evaluations. I select a random subset of three datapoints in the data and run it, appending the answers and metadata to qa_results.json.
+
 ## Further Development Options
 
 In my output I highlight the datapoints used. Given more time, I would try to do some validation of these against the question, and potentially also against the table to make sure they are being extracted properly.
