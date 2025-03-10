@@ -20,7 +20,7 @@ agent = Agent(
         "3. Show your calculation process clearly\n"
         "4. Do NOT round during intermediate calculations\n"
         "5. The answer MAY be negative\n"
-        "6. Give the exact number - do not round\n"
+        "6. Give the exact number - do not round or include commas for large numbers\n"
         "7. Where two dates are given and the question asks you to calculate change, assume the change is between the earlier and later year\n"
         "7. Return structured responses with:\n"
         "   - Direct answer to the question\n"
@@ -81,15 +81,6 @@ async def calculate_growth_rate(initial: float, final: float, periods: int = 1) 
         return "Cannot calculate growth rate with zero or negative values"
     cagr = ((final / initial) ** (1 / periods) - 1) * 100
     return f"{cagr:.2f}%"
-
-
-@agent.tool_plain
-async def calculate_financial_ratio(numerator: float, denominator: float) -> str:
-    """Calculate financial ratios with proper formatting."""
-    if denominator == 0:
-        return "Cannot divide by zero"
-    ratio = numerator / denominator
-    return f"{ratio:.3f}"
 
 
 @agent.tool_plain
