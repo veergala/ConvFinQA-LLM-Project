@@ -202,5 +202,68 @@
         "percentage_error": 0.3377728751778649,
         "question": "what is the percentage change in the total gross amount of unrecognized tax benefits from 2013 to 2014?",
         "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "0.674675570548342",
+        "calculation_explanation": "calculate the percentage change of benefit payments from 2009 to 2010, which is (3139-2641)/2641 = 18.86%. Then calculate the percentage change of expected subsidy receipts from 2009 to 2010, which is (91-77)/77 = 18.18%. The difference is 18.86% - 18.18% = 0.67%.",
+        "data_points_used": [
+            "Benefit payments in 2009: 2641",
+            "Benefit payments in 2010: 3139",
+            "Expected subsidy receipts in 2009: 77",
+            "Expected subsidy receipts in 2010: 91"
+        ],
+        "expected_answer": "0.67%",
+        "percentage_error": 0.697846350498806,
+        "question": "considering the years 2009 and 2010 , what is the difference between the growth of the benefit payments and the expected subsidy receipts?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "1.137",
+        "calculation_explanation": "63863 / 56172",
+        "data_points_used": [
+            "Accrued liability in 2008: 63863",
+            "Accrued liability in 2007: 56172"
+        ],
+        "expected_answer": "1.14",
+        "percentage_error": 0.2631578947368326,
+        "question": "what was the ratio of the accrued liability accrued liability related to the severance plan in 2008 to 2007",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "1805.4",
+        "calculation_explanation": "195.0 + 410.0 + 1300.4 = 1805.4",
+        "data_points_used": [
+            "2013: 195.0",
+            "2012: 410.0",
+            "2011: 1300.4"
+        ],
+        "expected_answer": "1905.4",
+        "percentage_error": 5.24824183898394,
+        "question": "what are the total pre-tax catastrophe losses in the last three years?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "63.83%",
+        "calculation_explanation": "150/235 * 100 = 63.83",
+        "data_points_used": [
+            "americas: 150",
+            "total: 235"
+        ],
+        "expected_answer": "64%",
+        "percentage_error": 0.26562500000000266,
+        "question": "what percentage of factory stores as of march 29 , 2014 are in the americas?",
+        "model_choice": "gemini-2.0-flash"
+    },
+    {
+        "answer": "14.89%",
+        "calculation_explanation": "35/235*100 = 14.89",
+        "data_points_used": [
+            "Asia: 35",
+            "Total: 235"
+        ],
+        "expected_answer": "15%",
+        "percentage_error": 0.7333333333333295,
+        "question": "what percentage of factory stores as of march 29 , 2014 are in asia?",
+        "model_choice": "gemini-2.0-flash"
     }
 ]

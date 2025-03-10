@@ -12,7 +12,6 @@ def generate_ape_histogram(model, results_json="qa_results.json"):
         for entry in results
         if entry.get("model_choice") == model
     ]
-    print(max(percentage_errors))
     plt.hist(
         percentage_errors,
         bins=[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100, 200, 300, 400, 500, 600],
@@ -42,7 +41,7 @@ def eval_model_ape(model, results_json="qa_results.json"):
     return sum(percentage_errors) / len(percentage_errors)
 
 
-print(eval_model_ape("gemini-2.0-flash"))
+print("Mean Absolute Percentage Error: " + str(eval_model_ape("gemini-2.0-flash")))
 
 
 def eval_model_ape_threshold(model, threshold, results_json="qa_results.json"):
@@ -60,6 +59,9 @@ def eval_model_ape_threshold(model, threshold, results_json="qa_results.json"):
     return count_below_ten / len(percentage_errors)
 
 
-print(eval_model_ape_threshold("gemini-2.0-flash", threshold=10))
+print(
+    "Threshold-based Error Rate: "
+    + str(eval_model_ape_threshold("gemini-2.0-flash", threshold=10))
+)
 
 generate_ape_histogram("gemini-2.0-flash")

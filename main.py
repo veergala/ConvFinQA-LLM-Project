@@ -53,7 +53,6 @@ def run_qa(dataset, row_num):
             actual = float(result.data.answer.strip(" %#$"))
             expected = float(qa_data["answer"].strip(" %#$"))
             error = abs((actual - expected) / expected) * 100
-            print(actual, expected, error)
             print(f"Error: {error}")
         except (ValueError, AttributeError):
             # Non-numeric answers

@@ -65,7 +65,6 @@ async def extract_table_data(ctx: RunContext[ConvFinQAEntry]) -> str:
                 + ". \n"
             )
             table_data += datapoint_string
-    print(table_data)
     return table_data
 
 
