@@ -7,8 +7,16 @@ class ConvFinQAEntry(BaseModel):
     table: list
 
 
-class FinancialResponse(BaseModel):
+class AgentResponse(BaseModel):
     """Structured response for financial questions"""
+
     answer: str
     calculation_explanation: str
     data_points_used: list[str]
+
+
+class ResponseMetadata(AgentResponse):
+    expected_answer: str
+    percentage_error: float
+    question: str
+    model_choice: str

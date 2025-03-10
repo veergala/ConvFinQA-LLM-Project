@@ -1,14 +1,16 @@
 from dotenv import load_dotenv
-from models import ConvFinQAEntry, FinancialResponse
 from pydantic_ai import Agent, RunContext
+
+from models import AgentResponse, ConvFinQAEntry
 
 load_dotenv()
 
+model_choice = "gemini-2.0-flash"
 
 agent = Agent(
-    model="gemini-2.0-flash",
+    model=model_choice,
     deps_type=ConvFinQAEntry,
-    result_type=FinancialResponse,
+    result_type=AgentResponse,
     system_prompt=(
         "You're a financial analyst assistant specialized in data analysis.\n"
         "For each question:\n"

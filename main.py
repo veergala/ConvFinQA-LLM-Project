@@ -1,7 +1,8 @@
 import json
+import os
 
-from agent import agent
-from models import ConvFinQAEntry
+from agent import agent, model_choice
+from models import ConvFinQAEntry, ResponseMetadata
 
 
 def run_qa(row):
@@ -22,7 +23,7 @@ def run_qa(row):
         # Single QA format
         qa_pairs = [("qa", data[row]["qa"])]
     else:
-        # Multiple QA format - gather all qa_N keys
+        # Double QA format - gather qa_0 and qa_1
         qa_pairs = [
             (f"qa_{i}", data[row][f"qa_{i}"])
             for i in range(2)
@@ -30,7 +31,7 @@ def run_qa(row):
         ]
 
     # Process each QA pair
-    errors = []
+    response_metadata_list = []
     for qa_key, qa_data in qa_pairs:
         print(f"\n{'=' * 50}")
         print(f"Processing {qa_key}:")
@@ -53,11 +54,25 @@ def run_qa(row):
             error = abs((actual - expected) / expected) * 100
             print(actual, expected, error)
             print(f"Error: {error}")
-            errors.append(error)
         except (ValueError, AttributeError):
             # Non-numeric answers
             print("Note: Non-numeric answer comparison")
-    return qa_data["answer"], errors
+            error = None
+
+        # Create ResponseMetadata object
+        if error is not None:
+            response_metadata = ResponseMetadata(
+                answer=result.data.answer,
+                calculation_explanation=result.data.calculation_explanation,
+                data_points_used=result.data.data_points_used,
+                expected_answer=qa_data["answer"],
+                percentage_error=error,
+                question=qa_data["question"],
+                model_choice = model_choice
+            )
+            response_metadata_list.append(response_metadata)
+
+    return response_metadata_list
 
 
 if __name__ == "__main__":
@@ -65,8 +80,18 @@ if __name__ == "__main__":
     with open("train.json", "r") as f:
         data = json.load(f)
 
-    errors = []
+    if os.path.exists("qa_results.json"):
+        with open("qa_results.json", "r") as f:
+            all_results = json.load(f)
+    else:
+        all_results = []
 
+    # Process the data and collect results
     for i in range(5):
-        errors += run_qa(i)[1]
-    print(errors)
+        results = run_qa(i)
+        for result in results:
+            all_results.append(result.dict())
+
+    # Write the accumulated results to the file, appending to the existing data
+    with open("qa_results.json", "w") as f:
+        json.dump(all_results, f, indent=4)
