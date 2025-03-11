@@ -2,6 +2,8 @@
 
 ## Running the Model
 
+__NB: Currently the model has only been tested for Gemini 2.0 Flash. Other models may work, but this is not guaranteed.__
+
 Before attempting to run the model, save your API key to a `.env` file in the root and update `agent.py` with your desired model choice, in the format given here: https://ai.pydantic.dev/models/
 
 To run the model, use `uv run main.py`. 
